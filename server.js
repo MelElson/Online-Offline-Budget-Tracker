@@ -15,8 +15,10 @@ app.use(express.json());
 
 app.use(express.static("public"));
 
-mongoose.connect("mongodb://localhost/budget", {
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/stormy-crag", {
   useNewUrlParser: true,
+  useUnifiedTopology: true,
+    userCreateIndex: true,  ///changed useCreateIndex
   useFindAndModify: false
 });
 
